@@ -148,6 +148,11 @@
             font-weight: 600;
             transition: background 0.3s;
         }
+        .button-container a .icon {
+            margin-right: 8px;
+            font-size: 1.2rem;
+            vertical-align: -2px;
+        }
         .button-container a.x {
             background-color: #14f195;
             color: #0a0e23;
@@ -228,8 +233,12 @@
         <h1 id="hero-title" data-i18n="hero_title">Essential Risk Information</h1>
         <p id="hero-subtitle" data-i18n="hero_subtitle">for cryptocurrency and memecoin investments</p>
         <div class="button-container">
-            <a href="https://x.com/_business_mind_?s=21" class="x" id="btn-x" data-i18n="btn_x">Follow me on X</a>
-            <a href="https://t.me/Business_Mind_Alpha" class="telegram" id="btn-telegram" data-i18n="btn_telegram">Join my Telegram Alpha Group</a>
+            <a href="https://x.com/_business_mind_?s=21" class="x" id="btn-x">
+                <span class="icon">𝕏</span><span data-i18n="btn_x">Follow me on X</span>
+            </a>
+            <a href="https://t.me/Business_Mind_Alpha" class="telegram" id="btn-telegram">
+                <span class="icon">✈️</span><span data-i18n="btn_telegram">Join my Telegram Alpha Group</span>
+            </a>
         </div>
         <!-- Language selector placed in the hero to allow visitors to pick a language manually -->
         <div class="language-selector">
