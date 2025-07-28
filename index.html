@@ -19,6 +19,47 @@
             color: #ffffff;
             line-height: 1.6;
         }
+        /* Hamburger menu toggle */
+        .menu-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 30px;
+            height: 22px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .menu-toggle span {
+            display: block;
+            height: 3px;
+            background-color: #ffffff;
+            margin-bottom: 5px;
+            border-radius: 3px;
+        }
+        /* Slide-out drawer for the disclaimer */
+        .drawer {
+            position: fixed;
+            top: 0;
+            right: -350px;
+            width: 320px;
+            height: 100%;
+            background-color: #0a0e23;
+            padding: 20px;
+            overflow-y: auto;
+            transition: right 0.3s ease;
+            z-index: 1000;
+        }
+        .drawer.open {
+            right: 0;
+        }
+        .drawer h2 {
+            color: #14f195;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        .drawer .notice {
+            margin-bottom: 20px;
+        }
         /* Hero section with gradient background and call to action */
         .hero {
             background: linear-gradient(90deg, #9945ff 0%, #14f195 100%);
@@ -131,6 +172,12 @@
     </style>
 </head>
 <body>
+    <!-- Hamburger menu icon -->
+    <div class="menu-toggle" onclick="toggleDrawer()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
     <header class="hero">
         <h1>Essential Risk Information</h1>
         <p>for cryptocurrency and memecoin investments</p>
@@ -139,7 +186,9 @@
             <a href="https://t.me/Business_Mind_Alpha" class="telegram">Join my Telegram Alpha Group</a>
         </div>
     </header>
-    <div class="container">
+    <!-- Slide-out drawer containing the disclaimer content -->
+    <div id="drawer" class="drawer">
+        <h2>Disclaimer</h2>
         <!-- Important notice section -->
         <div class="notice">
             <h2><span class="emoji">🎭</span> Important Notice</h2>
@@ -275,5 +324,11 @@
     <footer>
         © 2025 Business Mind. All rights reserved. This information is provided for educational purposes only and does not constitute financial advice.
     </footer>
+    <script>
+        // Toggle the disclaimer drawer open and closed
+        function toggleDrawer() {
+            document.getElementById('drawer').classList.toggle('open');
+        }
+    </script>
 </body>
 </html>
