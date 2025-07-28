@@ -41,7 +41,8 @@
             position: fixed;
             top: 0;
             right: -100%;
-            width: 100%;
+            /* The drawer is a narrow side panel; its width adapts to the viewport. On mobile, it's up to 80% of the viewport, with a max of 320px and a minimum of 260px. */
+            width: clamp(260px, 80vw, 320px);
             height: 100%;
             background-color: #0a0e23;
             padding: 20px;
@@ -60,10 +61,11 @@
         .drawer .notice {
             margin-bottom: 20px;
         }
-        /* Drawer navigation with horizontal orientation */
+        /* Drawer navigation with vertical orientation */
         .drawer-nav {
             display: flex;
-            gap: 20px;
+            flex-direction: column;
+            gap: 10px;
             margin-bottom: 20px;
         }
         .drawer-nav .nav-link {
@@ -82,9 +84,8 @@
             display: block;
         }
 
-        /* Hide the old navigation bar and content sections since we use a drawer */
-        .main-nav,
-        .content-section {
+        /* Hide the old horizontal navigation bar since we use a drawer */
+        .main-nav {
             display: none !important;
         }
 
@@ -554,22 +555,18 @@
         function toggleDrawer() {
             const drawer = document.getElementById('drawer');
             drawer.classList.toggle('open');
-            // When opening the drawer, default to showing the disclaimer section
-            if (drawer.classList.contains('open')) {
-                showSection('disclaimer');
-            }
         }
 
-        // Show a specific section within the drawer and update active navigation state
+        // Show a specific content section and update navigation state
         function showSection(id) {
-            // Hide all sections in the drawer
-            document.querySelectorAll('.drawer-section').forEach((section) => {
+            // Hide all content sections
+            document.querySelectorAll('.content-section').forEach((section) => {
                 section.classList.remove('active');
             });
-            // Show the requested section
-            const target = document.getElementById('section-' + id);
-            if (target) {
-                target.classList.add('active');
+            // Show the requested content section
+            const targetContent = document.getElementById('section-' + id);
+            if (targetContent) {
+                targetContent.classList.add('active');
             }
             // Update nav link active state
             document.querySelectorAll('.drawer-nav .nav-link').forEach((link) => {
@@ -579,6 +576,9 @@
                     link.classList.remove('active');
                 }
             });
+            // Close the drawer after selecting a section
+            const drawer = document.getElementById('drawer');
+            drawer.classList.remove('open');
         }
 
         // Bind click handlers for navigation links inside the drawer
@@ -590,8 +590,6 @@
                     showSection(id);
                 });
             });
-            // Show the default section on page load
-            showSection('disclaimer');
         });
 
         /**
