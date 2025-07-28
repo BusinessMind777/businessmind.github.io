@@ -19,22 +19,23 @@
             color: #ffffff;
             line-height: 1.6;
         }
-        /* Hamburger menu toggle */
-        .menu-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            width: 30px;
-            height: 22px;
-            cursor: pointer;
-            z-index: 1001;
+        /* Navigation bar for switching between sections */
+        .main-nav {
+            background-color: #101a28;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 15px 0;
+            margin: 0;
         }
-        .menu-toggle span {
-            display: block;
-            height: 3px;
-            background-color: #ffffff;
-            margin-bottom: 5px;
-            border-radius: 3px;
+        .main-nav a {
+            color: #14f195;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .main-nav a.active {
+            text-decoration: underline;
         }
 
         /* Language selector styles */
@@ -52,51 +53,11 @@
             font-family: 'Inter', sans-serif;
             font-size: 0.9rem;
         }
-        /* Slide-out drawer for the disclaimer */
-        .drawer {
-            position: fixed;
-            top: 0;
-            right: -350px;
-            width: 320px;
-            height: 100%;
-            background-color: #0a0e23;
-            padding: 20px;
-            overflow-y: auto;
-            transition: right 0.3s ease;
-            z-index: 1000;
-        }
-        .drawer.open {
-            right: 0;
-        }
-        .drawer h2 {
-            color: #14f195;
-            margin-top: 0;
-            margin-bottom: 20px;
-        }
-        .drawer .notice {
-            margin-bottom: 20px;
-        }
-
-        /* Drawer navigation */
-        .drawer-nav {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        .drawer-nav .nav-link {
-            color: #14f195;
-            text-decoration: none;
-            font-weight: 600;
-            cursor: pointer;
-        }
-        .drawer-nav .nav-link.active {
-            text-decoration: underline;
-        }
-        /* Sections within the drawer */
-        .drawer-section {
+        /* Content sections displayed under the nav */
+        .content-section {
             display: none;
         }
-        .drawer-section.active {
+        .content-section.active {
             display: block;
         }
         /* Hero section with gradient background and call to action */
@@ -211,12 +172,6 @@
     </style>
 </head>
 <body>
-    <!-- Hamburger menu icon -->
-    <div class="menu-toggle" onclick="toggleDrawer()">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
     <header class="hero">
         <h1 id="hero-title" data-i18n="hero_title">Essential Risk Information</h1>
         <p id="hero-subtitle" data-i18n="hero_subtitle">for cryptocurrency and memecoin investments</p>
@@ -233,16 +188,13 @@
             </select>
         </div>
     </header>
-    <!-- Slide-out drawer containing the disclaimer content -->
-    <div id="drawer" class="drawer">
-        <h2 id="drawer-title" data-i18n="drawer_title">Disclaimer</h2>
-        <!-- Navigation within the drawer to switch between sections -->
-        <nav class="drawer-nav">
-            <a href="#" class="nav-link" data-section="disclaimer" data-i18n="nav_disclaimer">Disclaimer</a>
-            <a href="#" class="nav-link" data-section="axiom" data-i18n="nav_axiom">Axiom Exchange</a>
-        </nav>
-        <!-- Disclaimer section (default) -->
-        <div id="section-disclaimer" class="drawer-section active">
+    <!-- Main navigation for sections -->
+    <nav class="main-nav">
+        <a href="#" class="nav-link" data-section="disclaimer" data-i18n="nav_disclaimer">Disclaimer</a>
+        <a href="#" class="nav-link" data-section="axiom" data-i18n="nav_axiom">Axiom Exchange</a>
+    </nav>
+    <!-- Disclaimer section (default) -->
+    <div id="section-disclaimer" class="content-section active">
         <!-- Important notice section -->
         <div class="notice" id="important-notice">
             <h2><span class="emoji">🎭</span> <span data-i18n="important_notice_title">Important Notice</span></h2>
@@ -376,32 +328,23 @@
         </div><!-- end of final words notice -->
         </div><!-- end of disclaimer section -->
         <!-- Axiom Exchange section -->
-        <div id="section-axiom" class="drawer-section">
+        <div id="section-axiom" class="content-section">
             <div class="notice">
                 <h2><span class="emoji">💼</span> <span data-i18n="axiom_title">Axiom Exchange</span></h2>
-                <p data-i18n="axiom_p1">I am an exclusive partner of Axiom Exchange. Use my referral link to sign up and receive additional cashback on your trades and reduced fees.</p>
-                <p><a href="#" class="x" id="axiom-link" data-i18n="axiom_link_text">Join Axiom Exchange</a></p>
+                <!-- Detailed description of Axiom Exchange in multiple paragraphs -->
+                <p data-i18n="axiom_p1"></p>
+                <p data-i18n="axiom_p2"></p>
+                <p><a href="https://axiom.trade/@business" class="x" id="axiom-link" data-i18n="axiom_link_text">Join Axiom Exchange</a></p>
             </div>
         </div><!-- end of Axiom section -->
-    </div><!-- end of drawer -->
     <footer>
         © 2025 Business Mind. All rights reserved. This information is provided for educational purposes only and does not constitute financial advice.
     </footer>
     <script>
-        // Toggle the disclaimer drawer open and closed
-        function toggleDrawer() {
-            const drawer = document.getElementById('drawer');
-            drawer.classList.toggle('open');
-            // When opening the drawer, default to showing the disclaimer section
-            if (drawer.classList.contains('open')) {
-                showSection('disclaimer');
-            }
-        }
-
-        // Show a specific section within the drawer and update active navigation state
+        // Show a specific section and update active navigation state
         function showSection(id) {
-            // Hide all sections
-            document.querySelectorAll('.drawer-section').forEach((section) => {
+            // Hide all content sections
+            document.querySelectorAll('.content-section').forEach((section) => {
                 section.classList.remove('active');
             });
             // Show the requested section
@@ -410,7 +353,7 @@
                 target.classList.add('active');
             }
             // Update nav link active state
-            document.querySelectorAll('.drawer-nav .nav-link').forEach((link) => {
+            document.querySelectorAll('.main-nav .nav-link').forEach((link) => {
                 if (link.getAttribute('data-section') === id) {
                     link.classList.add('active');
                 } else {
@@ -421,13 +364,15 @@
 
         // Bind click handlers for navigation links
         document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.drawer-nav .nav-link').forEach((link) => {
+            document.querySelectorAll('.main-nav .nav-link').forEach((link) => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
                     const id = link.getAttribute('data-section');
                     showSection(id);
                 });
             });
+            // Show the default section on page load
+            showSection('disclaimer');
         });
 
         /**
@@ -502,7 +447,8 @@
                 ,nav_disclaimer: 'Disclaimer'
                 ,nav_axiom: 'Axiom Exchange'
                 ,axiom_title: 'Axiom Exchange'
-                ,axiom_p1: 'I am an exclusive partner of Axiom Exchange. Use my referral link to sign up and receive additional cashback on your trades and reduced fees.'
+                ,axiom_p1: 'Axiom Exchange is a full-featured, non-custodial trading platform on Solana that lets you buy, sell and manage your tokens all in one place. With lightning-fast order execution (limit orders land in ≤ 1 block), wallet and Twitter tracking, a migration sniper for migrating tokens, and MEV-resistant infrastructure, Axiom provides deep liquidity and powerful tools for both beginners and pros.'
+                ,axiom_p2: 'You can earn up to 15% APY on idle funds via MarginFi integration and buy crypto without KYC thanks to our partnership with Coinbase. Our 3-tier referral program lets you earn 30% of Axiom’s net fee on direct referrals, 3% on level 2 and 2% on level 3; anyone signing up through your link saves 10% on trading fees. Join with my exclusive link to receive extra cashback and fee discounts!'
                 ,axiom_link_text: 'Join Axiom Exchange'
             },
             de: {
@@ -570,7 +516,8 @@
                 ,nav_disclaimer: 'Disclaimer'
                 ,nav_axiom: 'Axiom Exchange'
                 ,axiom_title: 'Axiom Exchange'
-                ,axiom_p1: 'Ich bin exklusiver Partner der Axiom Exchange. Nutze meinen Empfehlungslink, um dich anzumelden, und erhalte zusätzliches Cashback auf deine Trades und reduzierte Gebühren.'
+                ,axiom_p1: 'Axiom Exchange ist eine voll ausgestattete, nicht-kustodiale Handelsplattform auf Solana, mit der du Token kaufen, verkaufen und verwalten kannst – alles an einem Ort. Dank blitzschneller Auftragsausführung (Limit Orders landen innerhalb von ≤ 1 Block), Wallet- und Twitter-Tracking, einem Migrations-Sniper für migrierende Token und einer MEV-resistenten Infrastruktur bietet Axiom tiefe Liquidität und leistungsstarke Werkzeuge für Anfänger und Profis.'
+                ,axiom_p2: 'Du kannst auf deine ungenutzten Mittel bis zu 15 % APY über die Integration mit MarginFi verdienen und dank unserer Partnerschaft mit Coinbase ohne KYC Krypto kaufen. Unser dreistufiges Empfehlungsprogramm belohnt dich mit 30 % der Netto-Gebühren auf direkte Empfehlungen, 3 % auf Level 2 und 2 % auf Level 3; jeder, der sich über deinen Link registriert, erhält 10 % Rabatt auf die Handelsgebühren. Nutze meinen exklusiven Link, um zusätzliches Cashback und Fee-Rabatte zu erhalten!'
                 ,axiom_link_text: 'Axiom Exchange beitreten'
             }
         };
