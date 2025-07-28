@@ -36,6 +36,22 @@
             margin-bottom: 5px;
             border-radius: 3px;
         }
+
+        /* Language selector styles */
+        .language-selector {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        .language-selector select {
+            padding: 6px 8px;
+            border-radius: 4px;
+            background-color: #0a0e23;
+            color: #ffffff;
+            border: 1px solid #14f195;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+        }
         /* Slide-out drawer for the disclaimer */
         .drawer {
             position: fixed;
@@ -179,145 +195,153 @@
         <span></span>
     </div>
     <header class="hero">
-        <h1>Essential Risk Information</h1>
-        <p>for cryptocurrency and memecoin investments</p>
+        <h1 id="hero-title" data-i18n="hero_title">Essential Risk Information</h1>
+        <p id="hero-subtitle" data-i18n="hero_subtitle">for cryptocurrency and memecoin investments</p>
         <div class="button-container">
-            <a href="https://x.com/_business_mind_?s=21" class="x">Follow me on X</a>
-            <a href="https://t.me/Business_Mind_Alpha" class="telegram">Join my Telegram Alpha Group</a>
+            <a href="https://x.com/_business_mind_?s=21" class="x" id="btn-x" data-i18n="btn_x">Follow me on X</a>
+            <a href="https://t.me/Business_Mind_Alpha" class="telegram" id="btn-telegram" data-i18n="btn_telegram">Join my Telegram Alpha Group</a>
+        </div>
+        <!-- Language selector placed in the hero to allow visitors to pick a language manually -->
+        <div class="language-selector">
+            <select id="lang-select" aria-label="Select language">
+                <option value="en">English</option>
+                <option value="de">Deutsch</option>
+                <!-- Additional languages can be added here -->
+            </select>
         </div>
     </header>
     <!-- Slide-out drawer containing the disclaimer content -->
     <div id="drawer" class="drawer">
-        <h2>Disclaimer</h2>
+        <h2 id="drawer-title" data-i18n="drawer_title">Disclaimer</h2>
         <!-- Important notice section -->
-        <div class="notice">
-            <h2><span class="emoji">🎭</span> Important Notice</h2>
+        <div class="notice" id="important-notice">
+            <h2><span class="emoji">🎭</span> <span data-i18n="important_notice_title">Important Notice</span></h2>
             <ul>
-                <li>Everything I post should be viewed as satire and entertainment only. This is not financial advice.</li>
-                <li>You should always do your own research (DYOR) and consult with licensed financial professionals before making any investment decisions.</li>
-                <li>I am not responsible for any financial losses or gains resulting from any information shared.</li>
+                <li data-i18n="important_notice_1">Everything I post should be viewed as satire and entertainment only. This is not financial advice.</li>
+                <li data-i18n="important_notice_2">You should always do your own research (DYOR) and consult with licensed financial professionals before making any investment decisions.</li>
+                <li data-i18n="important_notice_3">I am not responsible for any financial losses or gains resulting from any information shared.</li>
             </ul>
         </div>
         <!-- High risk investment warning -->
-        <div class="notice">
-            <h2><span class="emoji">⚠️</span> High Risk Investment Warning</h2>
+        <div class="notice" id="high-risk">
+            <h2><span class="emoji">⚠️</span> <span data-i18n="high_risk_title">High Risk Investment Warning</span></h2>
             <ul>
-                <li>This disclaimer contains critical risk information that could affect your financial decisions.</li>
+                <li data-i18n="high_risk_1">This disclaimer contains critical risk information that could affect your financial decisions.</li>
             </ul>
         </div>
         <!-- Market volatility notice -->
-        <div class="notice">
-            <h2><span class="emoji">🚨</span> Market Volatility Notice</h2>
+        <div class="notice" id="market-volatility">
+            <h2><span class="emoji">🚨</span> <span data-i18n="market_volatility_title">Market Volatility Notice</span></h2>
             <ul>
-                <li>Digital assets, including cryptocurrencies, often experience rapid and unpredictable price changes.</li>
-                <li>Just because a token did well before doesn’t mean it will again. Some may pump, others may completely crash.</li>
-                <li>Always take time to review project fundamentals before putting any money in.</li>
+                <li data-i18n="market_volatility_1">Digital assets, including cryptocurrencies, often experience rapid and unpredictable price changes.</li>
+                <li data-i18n="market_volatility_2">Just because a token did well before doesn’t mean it will again. Some may pump, others may completely crash.</li>
+                <li data-i18n="market_volatility_3">Always take time to review project fundamentals before putting any money in.</li>
             </ul>
         </div>
         <!-- Price fluctuations -->
-        <div class="notice">
-            <h2><span class="emoji">📉</span> Price Fluctuations</h2>
+        <div class="notice" id="price-fluctuations">
+            <h2><span class="emoji">📉</span> <span data-i18n="price_fluctuations_title">Price Fluctuations</span></h2>
             <ul>
-                <li>The crypto space is extremely reactive to news, regulations, tech updates, and public sentiment.</li>
-                <li>Sudden dumps or spikes are common and can lead to serious financial losses.</li>
-                <li>If you’re unsure, talk to a licensed financial advisor before you invest.</li>
+                <li data-i18n="price_fluctuations_1">The crypto space is extremely reactive to news, regulations, tech updates, and public sentiment.</li>
+                <li data-i18n="price_fluctuations_2">Sudden dumps or spikes are common and can lead to serious financial losses.</li>
+                <li data-i18n="price_fluctuations_3">If you’re unsure, talk to a licensed financial advisor before you invest.</li>
             </ul>
         </div>
         <!-- General risk disclosure -->
-        <div class="notice">
-            <h2><span class="emoji">⚠️</span> General Risk Disclosure</h2>
+        <div class="notice" id="general-risk">
+            <h2><span class="emoji">⚠️</span> <span data-i18n="general_risk_title">General Risk Disclosure</span></h2>
             <ul>
-                <li>Crypto carries high risk and comes with no guarantees.</li>
-                <li>You could lose part or all of your investment.</li>
-                <li>The industry faces ongoing issues with scams, security exploits, and market manipulation.</li>
-                <li>Never invest more than you’re prepared to lose, and always DYOR (do your own research).</li>
+                <li data-i18n="general_risk_1">Crypto carries high risk and comes with no guarantees.</li>
+                <li data-i18n="general_risk_2">You could lose part or all of your investment.</li>
+                <li data-i18n="general_risk_3">The industry faces ongoing issues with scams, security exploits, and market manipulation.</li>
+                <li data-i18n="general_risk_4">Never invest more than you’re prepared to lose, and always DYOR (do your own research).</li>
             </ul>
         </div>
         <!-- About promotional content -->
-        <div class="notice">
-            <h2><span class="emoji">📣</span> About Promotional Content</h2>
+        <div class="notice" id="promo-content">
+            <h2><span class="emoji">📣</span> <span data-i18n="promo_content_title">About Promotional Content</span></h2>
             <ul>
-                <li>Any marketing, sponsored posts, or token shoutouts should not be taken as endorsements or financial advice.</li>
-                <li>Evaluate the source and motives behind promotional messages. Do your own digging before trusting anything.</li>
+                <li data-i18n="promo_content_1">Any marketing, sponsored posts, or token shoutouts should not be taken as endorsements or financial advice.</li>
+                <li data-i18n="promo_content_2">Evaluate the source and motives behind promotional messages. Do your own digging before trusting anything.</li>
             </ul>
         </div>
         <!-- Regulatory factors -->
-        <div class="notice">
-            <h2><span class="emoji">📜</span> Regulatory Factors</h2>
+        <div class="notice" id="regulatory-factors">
+            <h2><span class="emoji">📜</span> <span data-i18n="regulatory_factors_title">Regulatory Factors</span></h2>
             <ul>
-                <li>Laws around crypto change depending on where you live.</li>
-                <li>Understand the rules in your country before buying, selling, or promoting crypto assets.</li>
-                <li>It’s your responsibility to comply with any regional requirements or reporting obligations.</li>
+                <li data-i18n="regulatory_factors_1">Laws around crypto change depending on where you live.</li>
+                <li data-i18n="regulatory_factors_2">Understand the rules in your country before buying, selling, or promoting crypto assets.</li>
+                <li data-i18n="regulatory_factors_3">It’s your responsibility to comply with any regional requirements or reporting obligations.</li>
             </ul>
         </div>
         <!-- Personal accountability -->
-        <div class="notice">
-            <h2><span class="emoji">👤</span> Personal Accountability</h2>
+        <div class="notice" id="personal-accountability">
+            <h2><span class="emoji">👤</span> <span data-i18n="personal_accountability_title">Personal Accountability</span></h2>
             <ul>
-                <li>All decisions to invest are made at your own risk.</li>
-                <li>You’re the only one responsible for the outcome of your actions.</li>
-                <li>It’s smart to assess your own financial situation and risk tolerance before jumping into any project.</li>
+                <li data-i18n="personal_accountability_1">All decisions to invest are made at your own risk.</li>
+                <li data-i18n="personal_accountability_2">You’re the only one responsible for the outcome of your actions.</li>
+                <li data-i18n="personal_accountability_3">It’s smart to assess your own financial situation and risk tolerance before jumping into any project.</li>
             </ul>
         </div>
         <!-- No promises or profit guarantees -->
-        <div class="notice">
-            <h2><span class="emoji">❌</span> No Promises or Profit Guarantees</h2>
+        <div class="notice" id="no-promises">
+            <h2><span class="emoji">❌</span> <span data-i18n="no_promises_title">No Promises or Profit Guarantees</span></h2>
             <ul>
-                <li>There’s no promise of gains from anything mentioned here.</li>
-                <li>Past wins don’t predict future performance — losses are always possible.</li>
-                <li>Treat all content here as speculative.</li>
+                <li data-i18n="no_promises_1">There’s no promise of gains from anything mentioned here.</li>
+                <li data-i18n="no_promises_2">Past wins don’t predict future performance — losses are always possible.</li>
+                <li data-i18n="no_promises_3">Treat all content here as speculative.</li>
             </ul>
         </div>
         <!-- Not an insider -->
-        <div class="notice">
-            <h2><span class="emoji">🚫</span> Not an Insider</h2>
+        <div class="notice" id="not-insider">
+            <h2><span class="emoji">🚫</span> <span data-i18n="not_insider_title">Not an Insider</span></h2>
             <ul>
-                <li>Unless specifically stated, I have no inside connection to the teams or devs behind any project I talk about.</li>
-                <li>I don’t control project outcomes — I just post and share public info.</li>
+                <li data-i18n="not_insider_1">Unless specifically stated, I have no inside connection to the teams or devs behind any project I talk about.</li>
+                <li data-i18n="not_insider_2">I don’t control project outcomes — I just post and share public info.</li>
             </ul>
         </div>
         <!-- Education only -->
-        <div class="notice">
-            <h2><span class="emoji">📚</span> Education Only</h2>
+        <div class="notice" id="education-only">
+            <h2><span class="emoji">📚</span> <span data-i18n="education_only_title">Education Only</span></h2>
             <ul>
-                <li>Everything shared here is meant for learning and awareness — not professional financial guidance.</li>
-                <li>If you’re making big money decisions, consult someone licensed in finance.</li>
+                <li data-i18n="education_only_1">Everything shared here is meant for learning and awareness — not professional financial guidance.</li>
+                <li data-i18n="education_only_2">If you’re making big money decisions, consult someone licensed in finance.</li>
             </ul>
         </div>
         <!-- High risk of complete loss -->
-        <div class="notice">
-            <h2><span class="emoji">💀</span> High Risk of Complete Loss</h2>
+        <div class="notice" id="complete-loss">
+            <h2><span class="emoji">💀</span> <span data-i18n="complete_loss_title">High Risk of Complete Loss</span></h2>
             <ul>
-                <li>Especially with memecoins, losing everything is possible — and often happens.</li>
-                <li>These tokens are extremely volatile and often go to zero fast.</li>
-                <li>Only use money you’re okay walking away from.</li>
+                <li data-i18n="complete_loss_1">Especially with memecoins, losing everything is possible — and often happens.</li>
+                <li data-i18n="complete_loss_2">These tokens are extremely volatile and often go to zero fast.</li>
+                <li data-i18n="complete_loss_3">Only use money you’re okay walking away from.</li>
             </ul>
         </div>
         <!-- Designed for experienced traders -->
-        <div class="notice">
-            <h2><span class="emoji">🧠</span> Designed for Experienced Traders</h2>
+        <div class="notice" id="experienced-traders">
+            <h2><span class="emoji">🧠</span> <span data-i18n="experienced_traders_title">Designed for Experienced Traders</span></h2>
             <ul>
-                <li>This page is made for people who already understand how crypto works.</li>
-                <li>If you’re new here, tread carefully and get help from someone with experience.</li>
+                <li data-i18n="experienced_traders_1">This page is made for people who already understand how crypto works.</li>
+                <li data-i18n="experienced_traders_2">If you’re new here, tread carefully and get help from someone with experience.</li>
             </ul>
         </div>
         <!-- Memecoins specific risk -->
-        <div class="notice">
-            <h2><span class="emoji">🧪</span> Memecoins Specific Risk</h2>
+        <div class="notice" id="memecoins-specific">
+            <h2><span class="emoji">🧪</span> <span data-i18n="memecoins_specific_title">Memecoins Specific Risk</span></h2>
             <ul>
-                <li>Meme tokens are built around hype and rarely last long. Most die fast and go to zero.</li>
-                <li>Project devs can vanish, launch anonymously, or rug at any moment.</li>
-                <li>Community‑driven hype (especially on Telegram and X) is often exaggerated — don’t take it all literally.</li>
-                <li>Always approach with skepticism. These tokens are not long‑term financial vehicles — they’re speculative entertainment at best.</li>
+                <li data-i18n="memecoins_specific_1">Meme tokens are built around hype and rarely last long. Most die fast and go to zero.</li>
+                <li data-i18n="memecoins_specific_2">Project devs can vanish, launch anonymously, or rug at any moment.</li>
+                <li data-i18n="memecoins_specific_3">Community‑driven hype (especially on Telegram and X) is often exaggerated — don’t take it all literally.</li>
+                <li data-i18n="memecoins_specific_4">Always approach with skepticism. These tokens are not long‑term financial vehicles — they’re speculative entertainment at best.</li>
             </ul>
         </div>
         <!-- Final words -->
-        <div class="notice">
-            <h2><span class="emoji">✅</span> Final Words</h2>
+        <div class="notice" id="final-words">
+            <h2><span class="emoji">✅</span> <span data-i18n="final_words_title">Final Words</span></h2>
             <ul>
-                <li>Crypto investing carries real risks. Don’t act on emotion or hype.</li>
-                <li>This page exists to help you stay informed — not to replace real financial advice.</li>
-                <li>Come back and review this regularly. The space moves fast, and so do the risks.</li>
+                <li data-i18n="final_words_1">Crypto investing carries real risks. Don’t act on emotion or hype.</li>
+                <li data-i18n="final_words_2">This page exists to help you stay informed — not to replace real financial advice.</li>
+                <li data-i18n="final_words_3">Come back and review this regularly. The space moves fast, and so do the risks.</li>
             </ul>
         </div>
     </div>
@@ -328,6 +352,170 @@
         // Toggle the disclaimer drawer open and closed
         function toggleDrawer() {
             document.getElementById('drawer').classList.toggle('open');
+        }
+
+        /**
+         * Simple internationalisation support. Translations are stored
+         * in the `translations` object keyed by language code. To add
+         * additional languages, extend this object with the appropriate
+         * keys and translated strings.
+         */
+        const translations = {
+            en: {
+                hero_title: 'Essential Risk Information',
+                hero_subtitle: 'for cryptocurrency and memecoin investments',
+                btn_x: 'Follow me on X',
+                btn_telegram: 'Join my Telegram Alpha Group',
+                drawer_title: 'Disclaimer',
+                important_notice_title: 'Important Notice',
+                important_notice_1: 'Everything I post should be viewed as satire and entertainment only. This is not financial advice.',
+                important_notice_2: 'You should always do your own research (DYOR) and consult with licensed financial professionals before making any investment decisions.',
+                important_notice_3: 'I am not responsible for any financial losses or gains resulting from any information shared.',
+                high_risk_title: 'High Risk Investment Warning',
+                high_risk_1: 'This disclaimer contains critical risk information that could affect your financial decisions.',
+                market_volatility_title: 'Market Volatility Notice',
+                market_volatility_1: 'Digital assets, including cryptocurrencies, often experience rapid and unpredictable price changes.',
+                market_volatility_2: 'Just because a token did well before doesn’t mean it will again. Some may pump, others may completely crash.',
+                market_volatility_3: 'Always take time to review project fundamentals before putting any money in.',
+                price_fluctuations_title: 'Price Fluctuations',
+                price_fluctuations_1: 'The crypto space is extremely reactive to news, regulations, tech updates, and public sentiment.',
+                price_fluctuations_2: 'Sudden dumps or spikes are common and can lead to serious financial losses.',
+                price_fluctuations_3: 'If you’re unsure, talk to a licensed financial advisor before you invest.',
+                general_risk_title: 'General Risk Disclosure',
+                general_risk_1: 'Crypto carries high risk and comes with no guarantees.',
+                general_risk_2: 'You could lose part or all of your investment.',
+                general_risk_3: 'The industry faces ongoing issues with scams, security exploits, and market manipulation.',
+                general_risk_4: 'Never invest more than you’re prepared to lose, and always DYOR (do your own research).',
+                promo_content_title: 'About Promotional Content',
+                promo_content_1: 'Any marketing, sponsored posts, or token shoutouts should not be taken as endorsements or financial advice.',
+                promo_content_2: 'Evaluate the source and motives behind promotional messages. Do your own digging before trusting anything.',
+                regulatory_factors_title: 'Regulatory Factors',
+                regulatory_factors_1: 'Laws around crypto change depending on where you live.',
+                regulatory_factors_2: 'Understand the rules in your country before buying, selling, or promoting crypto assets.',
+                regulatory_factors_3: 'It’s your responsibility to comply with any regional requirements or reporting obligations.',
+                personal_accountability_title: 'Personal Accountability',
+                personal_accountability_1: 'All decisions to invest are made at your own risk.',
+                personal_accountability_2: 'You’re the only one responsible for the outcome of your actions.',
+                personal_accountability_3: 'It’s smart to assess your own financial situation and risk tolerance before jumping into any project.',
+                no_promises_title: 'No Promises or Profit Guarantees',
+                no_promises_1: 'There’s no promise of gains from anything mentioned here.',
+                no_promises_2: 'Past wins don’t predict future performance — losses are always possible.',
+                no_promises_3: 'Treat all content here as speculative.',
+                not_insider_title: 'Not an Insider',
+                not_insider_1: 'Unless specifically stated, I have no inside connection to the teams or devs behind any project I talk about.',
+                not_insider_2: 'I don’t control project outcomes — I just post and share public info.',
+                education_only_title: 'Education Only',
+                education_only_1: 'Everything shared here is meant for learning and awareness — not professional financial guidance.',
+                education_only_2: 'If you’re making big money decisions, consult someone licensed in finance.',
+                complete_loss_title: 'High Risk of Complete Loss',
+                complete_loss_1: 'Especially with memecoins, losing everything is possible — and often happens.',
+                complete_loss_2: 'These tokens are extremely volatile and often go to zero fast.',
+                complete_loss_3: 'Only use money you’re okay walking away from.',
+                experienced_traders_title: 'Designed for Experienced Traders',
+                experienced_traders_1: 'This page is made for people who already understand how crypto works.',
+                experienced_traders_2: 'If you’re new here, tread carefully and get help from someone with experience.',
+                memecoins_specific_title: 'Memecoins Specific Risk',
+                memecoins_specific_1: 'Meme tokens are built around hype and rarely last long. Most die fast and go to zero.',
+                memecoins_specific_2: 'Project devs can vanish, launch anonymously, or rug at any moment.',
+                memecoins_specific_3: 'Community‑driven hype (especially on Telegram and X) is often exaggerated — don’t take it all literally.',
+                memecoins_specific_4: 'Always approach with skepticism. These tokens are not long‑term financial vehicles — they’re speculative entertainment at best.',
+                final_words_title: 'Final Words',
+                final_words_1: 'Crypto investing carries real risks. Don’t act on emotion or hype.',
+                final_words_2: 'This page exists to help you stay informed — not to replace real financial advice.',
+                final_words_3: 'Come back and review this regularly. The space moves fast, and so do the risks.'
+            },
+            de: {
+                hero_title: 'Wichtige Risikoinformationen',
+                hero_subtitle: 'für Kryptowährungs- und Memecoin-Investitionen',
+                btn_x: 'Folge mir auf X',
+                btn_telegram: 'Tritt meiner Telegram-Alpha-Gruppe bei',
+                drawer_title: 'Haftungsausschluss',
+                important_notice_title: 'Wichtiger Hinweis',
+                important_notice_1: 'Alles, was ich poste, sollte als Satire und Unterhaltung betrachtet werden. Dies ist keine Finanzberatung.',
+                important_notice_2: 'Du solltest immer deine eigene Recherche betreiben (DYOR) und lizenzierte Finanzexperten konsultieren, bevor du Anlageentscheidungen triffst.',
+                important_notice_3: 'Ich bin nicht verantwortlich für finanzielle Verluste oder Gewinne, die aus geteilten Informationen resultieren.',
+                high_risk_title: 'Warnung vor hohem Risiko',
+                high_risk_1: 'Dieser Disclaimer enthält wichtige Risikoinformationen, die deine finanziellen Entscheidungen beeinflussen könnten.',
+                market_volatility_title: 'Hinweis zur Marktvolatilität',
+                market_volatility_1: 'Digitale Assets, einschließlich Kryptowährungen, unterliegen oft schnellen und unvorhersehbaren Preisschwankungen.',
+                market_volatility_2: 'Nur weil ein Token zuvor gut performt hat, heißt das nicht, dass es wieder so sein wird. Einige steigen, andere können komplett abstürzen.',
+                market_volatility_3: 'Nimm dir immer Zeit, die Fundamentaldaten eines Projekts zu prüfen, bevor du Geld investierst.',
+                price_fluctuations_title: 'Kursschwankungen',
+                price_fluctuations_1: 'Der Kryptomarkt reagiert extrem auf Nachrichten, Regulierung, technische Updates und öffentliche Stimmung.',
+                price_fluctuations_2: 'Plötzliche Abstürze oder Anstiege sind häufig und können zu erheblichen Verlusten führen.',
+                price_fluctuations_3: 'Wenn du unsicher bist, sprich mit einem lizenzierten Finanzberater, bevor du investierst.',
+                general_risk_title: 'Allgemeine Risikohinweise',
+                general_risk_1: 'Krypto ist hochriskant und bietet keine Garantien.',
+                general_risk_2: 'Du könntest einen Teil oder deine gesamte Investition verlieren.',
+                general_risk_3: 'Die Branche kämpft ständig mit Betrügereien, Sicherheitslücken und Marktmanipulation.',
+                general_risk_4: 'Investiere niemals mehr, als du bereit bist zu verlieren, und betreibe immer deine eigene Recherche.',
+                promo_content_title: 'Über Werbeinhalte',
+                promo_content_1: 'Marketing, gesponserte Beiträge oder Token-Erwähnungen sind keine Empfehlungen oder Finanzberatung.',
+                promo_content_2: 'Bewerte die Quelle und Motive hinter Werbenachrichten. Recherchiere selbst, bevor du etwas glaubst.',
+                regulatory_factors_title: 'Regulatorische Faktoren',
+                regulatory_factors_1: 'Die Gesetze rund um Krypto variieren je nach Region.',
+                regulatory_factors_2: 'Informiere dich über die Regeln in deinem Land, bevor du Krypto kaufst, verkaufst oder bewirbst.',
+                regulatory_factors_3: 'Es liegt in deiner Verantwortung, regionale Anforderungen oder Meldepflichten einzuhalten.',
+                personal_accountability_title: 'Persönliche Verantwortung',
+                personal_accountability_1: 'Alle Investitionsentscheidungen triffst du auf eigenes Risiko.',
+                personal_accountability_2: 'Du allein trägst die Verantwortung für das Ergebnis deiner Handlungen.',
+                personal_accountability_3: 'Es ist klug, deine finanzielle Situation und Risikotoleranz zu prüfen, bevor du in ein Projekt einsteigst.',
+                no_promises_title: 'Keine Gewinnversprechen',
+                no_promises_1: 'Es gibt keine Gewinnversprechen für die hier genannten Inhalte.',
+                no_promises_2: 'Vergangene Erfolge sagen nichts über zukünftige Ergebnisse aus – Verluste sind immer möglich.',
+                no_promises_3: 'Behandle alle Inhalte hier als spekulativ.',
+                not_insider_title: 'Kein Insider',
+                not_insider_1: 'Sofern nicht ausdrücklich erwähnt, habe ich keine interne Verbindung zu den Teams oder Entwicklern der Projekte, über die ich spreche.',
+                not_insider_2: 'Ich kontrolliere keine Projektergebnisse – ich veröffentliche und teile lediglich öffentliche Informationen.',
+                education_only_title: 'Nur zu Bildungszwecken',
+                education_only_1: 'Alles, was hier geteilt wird, dient der Information und dem Lernen – es ist keine professionelle Finanzberatung.',
+                education_only_2: 'Wenn du große Geldentscheidungen triffst, konsultiere jemanden mit Finanzlizenz.',
+                complete_loss_title: 'Hohe Gefahr des Totalverlusts',
+                complete_loss_1: 'Besonders bei Memecoins ist es möglich – und häufig –, dass man alles verliert.',
+                complete_loss_2: 'Diese Token sind extrem volatil und können schnell auf null fallen.',
+                complete_loss_3: 'Nutze nur Geld, auf das du verzichten kannst.',
+                experienced_traders_title: 'Für erfahrene Trader',
+                experienced_traders_1: 'Diese Seite ist für Menschen gemacht, die bereits verstehen, wie Krypto funktioniert.',
+                experienced_traders_2: 'Wenn du neu bist, gehe vorsichtig vor und lass dir von jemand Erfahrenem helfen.',
+                memecoins_specific_title: 'Memecoin-spezifische Risiken',
+                memecoins_specific_1: 'Memetoken basieren auf Hype und halten selten lange. Die meisten sterben schnell und fallen auf null.',
+                memecoins_specific_2: 'Projektentwickler können verschwinden, anonym starten oder jederzeit einen Rugpull machen.',
+                memecoins_specific_3: 'Community-Hype (besonders auf Telegram und X) wird oft übertrieben – nimm nicht alles wörtlich.',
+                memecoins_specific_4: 'Sei immer skeptisch. Diese Token sind keine langfristigen Anlagevehikel – sie sind spekulative Unterhaltung.',
+                final_words_title: 'Abschließende Worte',
+                final_words_1: 'Kryptoinvestitionen bergen reale Risiken. Handle nicht aus Emotion oder Hype.',
+                final_words_2: 'Diese Seite dient dazu, dich zu informieren – sie ersetzt keine echte Finanzberatung.',
+                final_words_3: 'Komm regelmäßig zurück und lies dies erneut. Der Markt bewegt sich schnell, und das gilt auch für die Risiken.'
+            }
+        };
+
+        /**
+         * Apply translations to all elements that specify a data‑i18n attribute.
+         * Falls back to English if a translation is missing.
+         */
+        function applyTranslations(lang) {
+            const dict = translations[lang] || translations['en'];
+            document.querySelectorAll('[data-i18n]').forEach((el) => {
+                const key = el.getAttribute('data-i18n');
+                // Use the translation if available, otherwise fall back to English
+                const translation = (dict && dict[key]) || translations['en'][key] || '';
+                el.textContent = translation;
+            });
+        }
+        // Determine the user's preferred language
+        const preferred = (navigator.languages && navigator.languages[0]) || navigator.language || 'en';
+        const langCode = preferred.substring(0, 2).toLowerCase();
+        // Apply translations based on detected language
+        applyTranslations(translations[langCode] ? langCode : 'en');
+        // Set the select to the detected language if available
+        const langSelect = document.getElementById('lang-select');
+        if (langSelect) {
+            if (translations[langCode]) {
+                langSelect.value = langCode;
+            }
+            langSelect.addEventListener('change', (e) => {
+                applyTranslations(e.target.value);
+            });
         }
     </script>
 </body>
