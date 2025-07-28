@@ -80,9 +80,10 @@
         .drawer-section {
             display: none;
         }
-        .drawer-section.active {
-            display: block;
-        }
+.drawer-section.active {
+    /* Keep drawer sections hidden so that the side drawer only shows the navigation list */
+    display: none;
+}
 
         /* Hide the old horizontal navigation bar since we use a drawer */
         .main-nav {
@@ -404,7 +405,7 @@
         <a href="#" class="nav-link" data-section="axiom" data-i18n="nav_axiom">Axiom Exchange</a>
     </nav>
     <!-- Disclaimer section (default) -->
-    <div id="section-disclaimer" class="content-section active">
+    <div id="section-disclaimer" class="content-section">
         <!-- Important notice section -->
         <div class="notice" id="important-notice">
             <h2><span class="emoji">🎭</span> <span data-i18n="important_notice_title">Important Notice</span></h2>
@@ -564,7 +565,8 @@
                 section.classList.remove('active');
             });
             // Show the requested content section
-            const targetContent = document.getElementById('section-' + id);
+            // Only look for the section inside the main content area (not inside the drawer)
+            const targetContent = document.querySelector('.content-section#section-' + id);
             if (targetContent) {
                 targetContent.classList.add('active');
             }
