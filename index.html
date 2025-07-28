@@ -148,9 +148,11 @@
             font-weight: 600;
             transition: background 0.3s;
         }
-        .button-container a .icon {
+        /* Style for inline SVG icons in buttons */
+        .button-container a .icon-svg {
+            width: 1em;
+            height: 1em;
             margin-right: 8px;
-            font-size: 1.2rem;
             vertical-align: -2px;
         }
         .button-container a.x {
@@ -234,10 +236,22 @@
         <p id="hero-subtitle" data-i18n="hero_subtitle">for cryptocurrency and memecoin investments</p>
         <div class="button-container">
             <a href="https://x.com/_business_mind_?s=21" class="x" id="btn-x">
-                <span class="icon">𝕏</span><span data-i18n="btn_x">Follow me on X</span>
+                <!-- Simple X icon drawn with lines -->
+                <svg class="icon-svg" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="3" y1="3" x2="13" y2="13" stroke="currentColor" stroke-width="2"/>
+                    <line x1="13" y1="3" x2="3" y2="13" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <span data-i18n="btn_x">Follow me on X</span>
             </a>
             <a href="https://t.me/Business_Mind_Alpha" class="telegram" id="btn-telegram">
-                <span class="icon">✈️</span><span data-i18n="btn_telegram">Join my Telegram Alpha Group</span>
+                <!-- Simple paper-plane icon inside a circle -->
+                <svg class="icon-svg" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                    <!-- outer circle uses current color -->
+                    <circle cx="8" cy="8" r="8" fill="currentColor"/>
+                    <!-- plane path is filled with page background colour to contrast -->
+                    <path d="M5 8 L11 5 L9.5 11 L7 9 L9 9 L9.5 11 Z" fill="#0a0e23"/>
+                </svg>
+                <span data-i18n="btn_telegram">Join my Telegram Alpha Group</span>
             </a>
         </div>
         <!-- Language selector placed in the hero to allow visitors to pick a language manually -->
